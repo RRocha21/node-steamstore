@@ -398,7 +398,7 @@ SteamStore.prototype.createWallet = function(code, billingAddress, callback) {
 			accept({
 				"eresult": body.success,
 				"detail": body.detail,
-				"redeemable": body.success == EResult.OK && body.detail == EPurchaseResult.NoDetail,
+				"redeemable": body.success == EResult.OK && (body.detail || EPurchaseResult.NoDetail) == EPurchaseResult.NoDetail,
 				"amount": body.wallet && body.wallet.amount,
 				"currencyCode": body.wallet && body.wallet.currencycode
 			});
