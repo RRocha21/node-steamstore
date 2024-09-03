@@ -444,7 +444,7 @@ SteamStore.prototype.redeemWalletCode = function(code, callback) {
 				return;
 			}
 
-			if (!body.success && !body.detail) {
+			if (!body || (!body.success && !body.detail)) {
 				return reject(new Error('Malformed response'));
 			}
 
